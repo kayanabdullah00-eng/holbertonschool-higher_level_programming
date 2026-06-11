@@ -13,7 +13,7 @@ My name is Walter White
 Default last name:
 
 >>> say_my_name("Bob")
-My name is Bob
+My name is Bob 
 
 Wrong first_name type:
 
@@ -28,6 +28,11 @@ Wrong last_name type:
 Traceback (most recent call last):
 ...
 TypeError: last_name must be a string
+
+Empty strings:
+
+>>> say_my_name("", "")
+My name is  
 
 Missing first_name:
 
