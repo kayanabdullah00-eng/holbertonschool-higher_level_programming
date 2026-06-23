@@ -1,0 +1,39 @@
+The `1-my_list` module
+======================
+
+Using `MyList` class to inherit from the built-in list and print its elements sorted.
+
+First, let's create an instance of MyList:
+    >>> MyList = __import__('1-my_list').MyList
+    >>> my_list = MyList()
+
+Verify that it behaves like a normal list initially:
+    >>> my_list.append(4)
+    >>> my_list.append(1)
+    >>> my_list.append(3)
+    >>> my_list.append(2)
+    >>> print(my_list)
+    [4, 1, 3, 2]
+
+Test the print_sorted method:
+    >>> my_list.print_sorted()
+    [1, 2, 3, 4]
+
+Verify that the original list order is intact and unchanged:
+    >>> print(my_list)
+    [4, 1, 3, 2]
+
+Test with an empty list:
+    >>> empty_list = MyList()
+    >>> empty_list.print_sorted()
+    []
+
+Test with a list that has identical numbers:
+    >>> dup_list = MyList([5, 2, 5, 2])
+    >>> dup_list.print_sorted()
+    [2, 2, 5, 5]
+
+Test with negative numbers:
+    >>> neg_list = MyList([-1, -10, 5, 0])
+    >>> neg_list.print_sorted()
+    [-10, -1, 0, 5]
