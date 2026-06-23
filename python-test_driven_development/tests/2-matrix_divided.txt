@@ -1,0 +1,67 @@
+Test for matrix_divided function.
+
+>>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+
+Normal matrix:
+
+>>> matrix_divided([[1, 2, 3], [4, 5, 6]], 3)
+[[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+
+Floats:
+
+>>> matrix_divided([[1.5, 2.5], [3.5, 4.5]], 2)
+[[0.75, 1.25], [1.75, 2.25]]
+
+Division by zero:
+
+>>> matrix_divided([[1, 2], [3, 4]], 0)
+Traceback (most recent call last):
+...
+ZeroDivisionError: division by zero
+
+Wrong div type:
+
+>>> matrix_divided([[1, 2], [3, 4]], "2")
+Traceback (most recent call last):
+...
+TypeError: div must be a number
+
+Wrong matrix type:
+
+>>> matrix_divided("School", 2)
+Traceback (most recent call last):
+...
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Different row sizes:
+
+>>> matrix_divided([[1, 2], [3, 4, 5]], 2)
+Traceback (most recent call last):
+...
+TypeError: Each row of the matrix must have the same size
+
+Wrong element type:
+
+>>> matrix_divided([[1, 2], [3, "4"]], 2)
+Traceback (most recent call last):
+...
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Division by infinity:
+
+>>> matrix_divided([[1, 2], [3, 4]], float("inf"))
+[[0.0, 0.0], [0.0, 0.0]]
+
+Missing one argument:
+
+>>> matrix_divided([[1, 2], [3, 4]])
+Traceback (most recent call last):
+...
+TypeError: matrix_divided() missing 1 required positional argument: 'div'
+
+Missing two arguments:
+
+>>> matrix_divided()
+Traceback (most recent call last):
+...
+TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'
