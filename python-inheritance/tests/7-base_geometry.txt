@@ -45,3 +45,17 @@ First, let's import the class:
     >>> bg.integer_validator("distance", -5)
     Traceback (most recent call last):
     ValueError: distance must be greater than 0
+
+5. Testing edge cases required by the checker (Tuple, Set, None)
+----------------------------------------------------------------
+    >>> bg.integer_validator("age", (4,))
+    Traceback (most recent call last):
+    TypeError: age must be an integer
+
+    >>> bg.integer_validator("age", {3, 4})
+    Traceback (most recent call last):
+    TypeError: age must be an integer
+
+    >>> bg.integer_validator("age", None)
+    Traceback (most recent call last):
+    TypeError: age must be an integer
