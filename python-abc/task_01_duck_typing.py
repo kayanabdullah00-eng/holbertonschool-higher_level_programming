@@ -82,4 +82,4 @@ def shape_info(shape_obj):
     It assumes the object implements 'area' and 'perimeter' methods.
     """
     print(f"Area: {shape_obj.area()}")
-    print(f"Perimeter: {shape_obj.perimeter()}")
+    print(f"Perimeter: {shape_obj.perimeter()}") 
