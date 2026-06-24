@@ -1,45 +1,59 @@
 #!/usr/bin/env python3
 """
-This module defines the VerboseList class which extends the built-in
-Python list to provide notification messages when items are modified.
+Module for Shape, Circle, Rectangle and duck typing.
 """
+from abc import ABC, abstractmethod
+import math
 
 
-class VerboseList(list):
-    """
-    A custom list class that prints messages upon adding or removing items.
-    """
+class Shape(ABC):
+    """Abstract class representing a shape."""
 
-    def append(self, item):
-        """
-        Appends an item to the list and prints a notification.
-        """
-        super().append(item)
-        print(f"Added [{item}] to the list.")
+    @abstractmethod
+    def area(self):
+        """Method to compute area."""
+        pass
 
-    def extend(self, iterable):
-        """
-        Extends the list with an iterable and prints a notification.
-        """
-        # Convert to list first to safely get the count, 
-        # especially if a generator or iterator is passed.
-        items_list = list(iterable)
-        item_count = len(items_list)
-        super().extend(items_list)
-        print(f"Extended the list with [{item_count}] items.")
+    @abstractmethod
+    def perimeter(self):
+        """Method to compute perimeter."""
+        pass
 
-    def remove(self, item):
-        """
-        Removes an item from the list and prints a notification.
-        """
-        print(f"Removed [{item}] from the list.")
-        super().remove(item)
 
-    def pop(self, index=-1):
-        """
-        Pops an item from the list at the given index and prints a notification.
-        Defaults to the last item if index is not provided.
-        """
-        item = self[index]
-        print(f"Popped [{item}] from the list.")
-        return super().pop(index)
+class Circle(Shape):
+    """Class representing a circle."""
+
+    def __init__(self, radius):
+        """Initialize circle with radius."""
+        self.radius = radius
+
+    def area(self):
+        """Return area of circle."""
+        return math.pi * (self.radius ** 2)
+
+    def perimeter(self):
+        """Return perimeter of circle."""
+        return 2 * math.pi * self.radius
+
+
+class Rectangle(Shape):
+    """Class representing a rectangle."""
+
+    def __init__(self, width, height):
+        """Initialize rectangle with width and height."""
+        self.width = width
+        self.height = height
+
+    def area(self):
+        """Return area of rectangle."""
+        return self.width * self.height
+
+    def perimeter(self):
+        """Return perimeter of rectangle."""
+        return 2 * (self.width + self.height)
+
+
+def shape_info(shape):
+    """Print area and perimeter using duck typing."""
+    print("Area: {}".format(shape.area()))
+    print("Perimeter: {}".format(shape.perimeter()))
