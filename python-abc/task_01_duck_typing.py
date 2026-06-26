@@ -1,6 +1,7 @@
-#!/usr/bin/python3
-"""Shapes, interfaces, and duck typing."""
-
+#!/usr/bin/env python3
+"""
+Module for Shape, Circle, Rectangle and duck typing.
+"""
 from abc import ABC, abstractmethod
 import math
 
@@ -10,12 +11,12 @@ class Shape(ABC):
 
     @abstractmethod
     def area(self):
-        """Return the area of the shape."""
+        """Method to compute area."""
         pass
 
     @abstractmethod
     def perimeter(self):
-        """Return the perimeter of the shape."""
+        """Method to compute perimeter."""
         pass
 
 
@@ -23,36 +24,36 @@ class Circle(Shape):
     """Class representing a circle."""
 
     def __init__(self, radius):
-        """Initialize a circle with a radius."""
+        """Initialize circle with radius."""
         self.radius = radius
 
     def area(self):
-        """Return the area of the circle."""
-        return math.pi * self.radius ** 2
+        """Return area of circle using absolute value of radius."""
+        return math.pi * (abs(self.radius) ** 2)
 
     def perimeter(self):
-        """Return the perimeter of the circle."""
-        return 2 * math.pi * self.radius
+        """Return perimeter of circle using absolute value of radius."""
+        return 2 * math.pi * abs(self.radius)
 
 
 class Rectangle(Shape):
     """Class representing a rectangle."""
 
     def __init__(self, width, height):
-        """Initialize a rectangle with width and height."""
+        """Initialize rectangle with width and height."""
         self.width = width
         self.height = height
 
     def area(self):
-        """Return the area of the rectangle."""
-        return self.width * self.height
+        """Return area of rectangle using absolute values."""
+        return abs(self.width) * abs(self.height)
 
     def perimeter(self):
-        """Return the perimeter of the rectangle."""
-        return 2 * (self.width + self.height)
+        """Return perimeter of rectangle using absolute values."""
+        return 2 * (abs(self.width) + abs(self.height))
 
 
 def shape_info(shape):
-    """Print the area and perimeter of a shape."""
+    """Print area and perimeter using duck typing."""
     print("Area: {}".format(shape.area()))
     print("Perimeter: {}".format(shape.perimeter()))
