@@ -29,3 +29,5 @@ if __name__ == "__main__":
 
     cursor.close()
     connection.close()
+
+safe_name = MySQLdb.escape_string(state_name).decode('utf-8')
